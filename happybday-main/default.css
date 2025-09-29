@@ -1,0 +1,243 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../img2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+a {
+  color: white;
+  font-size: 14px;
+}
+#main {
+  width: 100%;
+}
+#wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 680px;
+  margin-top: 10px;
+}
+#text {
+  width: 300px;
+  height: 560px;
+  left: 188px;
+  top: 80px;
+  position: absolute;
+}
+#code {
+  display: none;
+  color: rgb(196, 255, 255);
+  font-size: 16px;
+  margin-top: 70px;
+  line-height: 25px;
+  font-size: larger;
+  font-weight: bolder;
+}
+#clock-box {
+  position: absolute;
+  left: -300px;
+  top: 350px;
+  font-size: 16px;
+  display: block;
+  z-index: 1000;
+}
+
+.timer-container {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px 20px;
+  border: 2px solid rgba(252, 237, 33, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: timerGlow 2s ease-in-out infinite alternate;
+  max-width: 400px;
+}
+
+@keyframes timerGlow {
+  0% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 192, 203, 0.3);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 192, 203, 0.6);
+  }
+}
+
+.timer-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e9ca19;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px rgba(236, 195, 10, 0.6);
+}
+
+@keyframes titlePulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.timer-grid {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.timer-item {
+  text-align: center;
+  min-width: 50px;
+  animation: timerItemFloat 4s ease-in-out infinite;
+}
+
+.timer-item:nth-child(1) { animation-delay: 0s; }
+.timer-item:nth-child(2) { animation-delay: 0.2s; }
+.timer-item:nth-child(3) { animation-delay: 0.4s; }
+.timer-item:nth-child(4) { animation-delay: 0.6s; }
+.timer-item:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes timerItemFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.timer-number {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes numberPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.timer-label {
+  font-size: 11px;
+  color: #ffd6e6;
+  margin-top: 2px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+#clock-box a {
+  font-size: 28px;
+  text-decoration: none;
+}
+#next-clock-box {
+  position: fixed;
+  right: 1480px;
+  top: 500px;
+  font-size: 16px;
+  z-index: 1000;
+}
+#daily-message {
+  position: fixed;
+  left: 50%;
+  bottom: 200px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ffd6e6;
+  max-width: 90vw;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+#canvas {
+  margin: 0 auto;
+  width: 1100px;
+  height: 680px;
+  display: block;
+}
+#error {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60px;
+  display: none;
+}
+.hand {
+  cursor: pointer;
+}
+.say {
+  margin-left: 5px;
+}
+.space {
+  margin-right: 150px;
+}
+
+#message-box{
+  position: absolute;
+  margin-top:450px;
+  font-size: 25px;
+  font-family: monospace;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #wrap {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+  }
+  #canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1100 / 680;
+  }
+  #text {
+    left: 50%;
+    top: auto;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: 92%;
+    height: auto;
+  }
+  #code {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  #clock-box {
+    position: fixed;
+    left: 6px;
+    top: 6px;
+  }
+  #next-clock-box { right: 6px; top: 6px; }
+  #daily-message {
+    position: fixed;
+    left: 50%;
+    bottom: 200px;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    z-index: 1000;
+    text-align: center;
+  }
+  .timer-container {
+    padding: 8px 12px;
+    max-width: 240px;
+  }
+  .timer-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .timer-grid { gap: 6px; }
+  .timer-item { min-width: 38px; }
+  .timer-number { font-size: 18px; }
+  .timer-label { font-size: 10px; }
+}
+
+@media (max-width: 420px) {
+  .timer-container { max-width: 200px; }
+  .timer-number { font-size: 16px; }
+  .timer-label { font-size: 9px; }
+}
